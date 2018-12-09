@@ -67,7 +67,6 @@
 <script>
 import Vue from 'vue'
 import VueParticles from 'vue-particles'
-import 'vue-nav-tabs/themes/paper.css'
 import { debounce, isExternal } from '../util'
 let checkScrollHeight = () => {}
 
