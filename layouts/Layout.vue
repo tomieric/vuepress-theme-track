@@ -21,15 +21,15 @@
         clickMode="pubsh"
       ></vue-particles>
     </div>
-    <List :items="$pagination.posts" />
+    <List v-if="$pagination && $pagination.posts" :items="$pagination.posts" />
     <Pagination />
   </LayoutContainer>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VueParticles from 'vue-particles'
-  Vue.use(VueParticles)
+  // import Vue from 'vue'
+  // import VueParticles from 'vue-particles'
+  // Vue.use(VueParticles)
   import maskBgUrl from '../assets/images/world.png'
   export default {
     data () {

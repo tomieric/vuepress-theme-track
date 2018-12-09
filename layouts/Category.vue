@@ -14,6 +14,8 @@
     computed: {
       category () {
         const categoryName = this.$route.meta.categoryName
+        if (!this.$categories) return []
+        if (this.$categories && !this.$categories._metaMap) return []
         const metaMap = this.$categories._metaMap
         return metaMap[categoryName]
       }

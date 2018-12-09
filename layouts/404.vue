@@ -77,9 +77,11 @@
         const el = e.target
         const left = el.offsetWidth / 2 - document.body.clientWidth / 2 - e.pageX
         const top = el.offsetHeight / 2 - document.body.clientHeight / 2 - e.pageY
-        requestAnimationFrame(() => {
-          this.moveStyle['background-position'] = `${left / 10}px ${top / 10}px`
-        })
+        if (typeof window !== 'undefined') {
+          requestAnimationFrame(() => {
+            this.moveStyle['background-position'] = `${left / 10}px ${top / 10}px`
+          })
+        }
       }
     }
   }

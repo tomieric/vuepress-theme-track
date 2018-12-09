@@ -96,7 +96,8 @@
 </template>
 
 <script>
-  import Comment from 'vuepress-theme-yubisaki/package/comment'
+  import Comment from '../comment'
+  import Sidebar from '../components/Sidebar'
   import {
     resolvePage,
     normalize,
@@ -130,7 +131,8 @@
       return {}
     },
     components: {
-      Comment
+      Comment,
+      Sidebar
     },
     computed: {
       isFull () {
@@ -147,6 +149,7 @@
       },
       prev() {
         const prev = this.$page.frontmatter.prev
+        if (!this.$pagination) return
         if (prev === false) {
           return
         } else if (prev) {
@@ -157,6 +160,7 @@
       },
       next() {
         const next = this.$page.frontmatter.next
+        if (!this.$pagination) return
         if (next === false) {
           return
         } else if (next) {

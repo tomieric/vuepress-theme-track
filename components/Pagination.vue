@@ -3,25 +3,32 @@
     <nav class="pagination-nav">
       <router-link class="pagination-action pagination-prev" 
         :to="$pagination.prevLink"
-        v-if="$pagination.hasPrev">← </router-link>
+        v-if="$pagination && $pagination.hasPrev">← </router-link>
       <div class="pagination-docker">
-        <router-link v-for="({ path }, index) in $pagination.pages"
+        <router-link v-for="({ path }, index) in pages"
           :key="index" 
           class="pagination-num"
           :to="calcutePath(path)"
           :class="hightlightCurrentPage(index + 1)">
           {{ index + 1 }}
-        </router-link>  
+        </router-link> 
       </div>
       <router-link class="pagination-action pagination-next" 
         :to="$pagination.nextLink"
-        v-if="$pagination.hasNext"> →</router-link>
+        v-if="$pagination && $pagination.hasNext"> →</router-link>
     </nav>
   </ContentWrapper>
 </template>
 
 <script>
 export default {
+  computed: {
+    pages () {
+      if (!this.$pagination) return []
+      if (!this.$pagination.pages) return []
+      return this.$pagination.pages
+    }
+  },
   methods: {
     hightlightCurrentPage(pageNum) {
       return {

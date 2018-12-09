@@ -40,7 +40,6 @@
     "vue-popup": "^0.2.14",
     "vue-sticky": "^3.3.4",
     "vuepress-plugin-flowchart": "^1.4.3",
-    "vuepress-theme-yubisaki": "^3.1.0",
     "vuewordcloud": "^18.7.9",
     "yamljs": "^0.3.0"
   },

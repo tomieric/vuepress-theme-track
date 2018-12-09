@@ -29,7 +29,8 @@ module.exports = {
       ]
     }],
     ['@yubisaki/pagination'],
-    'flowchart'
+    'flowchart',
+    [require('./util/plugin')]
   ],
   chainWebpack: config => {
     const patterns = [

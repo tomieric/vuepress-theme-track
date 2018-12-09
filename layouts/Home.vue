@@ -66,11 +66,11 @@
 
 <script>
 import Vue from 'vue'
-import VueParticles from 'vue-particles'
+// import VueParticles from 'vue-particles'
 import { debounce, isExternal } from '../util'
 let checkScrollHeight = () => {}
 
-Vue.use(VueParticles)
+// Vue.use(VueParticles)
 
 export default {
   data () {
@@ -108,10 +108,14 @@ export default {
   },
   mounted() {
     checkScrollHeight = debounce(() => this.scrollPage(), 100)
-    window.addEventListener('scroll', checkScrollHeight)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', checkScrollHeight)
+    }
   },
   destroyed() {
-    window.removeEventListener('scroll', checkScrollHeight)
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', checkScrollHeight)
+    }
   },
 }
 </script>

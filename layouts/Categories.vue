@@ -6,7 +6,8 @@
         :src="poster"
         class="theme-track--page-poster"
        />
-      <ListContainer 
+      <ListContainer
+        v-if="$categories && $categories.list"
         :list="$categories.list"
         title="Categories" 
         type="list"

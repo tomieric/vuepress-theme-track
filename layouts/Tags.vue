@@ -6,7 +6,8 @@
         :src="poster"
         class="theme-track--page-poster"
        />
-      <listContainer 
+      <listContainer
+        v-if="$tags && $tags.list"
         :list="$tags.list" 
         title="Tags"
         style="min-height: auto"
@@ -32,8 +33,8 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import Tippy from 'v-tippy'
+  // import Vue from 'vue'
+  // import Tippy from 'v-tippy'
   import 'v-tippy/dist/tippy.css'
   import VueWordCloud from 'vuewordcloud'
   import { ensureExt, isExternal } from '../util'
@@ -42,7 +43,7 @@
   const colors = ['#ffd077', '#3bc4c7', '#3a9eea', '#ff4e69', '#461e47']
   const Chance = items => items[Math.ceil(Math.random() * item.length)]
 
-  Vue.use(Tippy)
+  // Vue.use(Tippy)
 
   export default {
     components: {
@@ -50,7 +51,7 @@
     },
     computed: {
       words () {
-        return this.$tags.list.map(tag => [tag.name, tag.pages.length])
+        return this.$tags && this.$tags.list ? this.$tags.list.map(tag => [tag.name, tag.pages.length]) : []
       },
       poster () {
         return isExternal(this.$page.frontmatter.poster) ? this.$page.frontmatter.poster : this.$withBase(this.$page.frontmatter.poster)
