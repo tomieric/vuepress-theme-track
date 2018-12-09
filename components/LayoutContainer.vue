@@ -10,6 +10,7 @@
 
 <style src="../assets/fonts/iconfont.css"></style>
 <style src="../styles/theme.styl" lang="stylus"></style>
+<style src="../styles/custom-blocks" lang="stylus"></style>
 <style src="../styles/mobile.styl" lang="stylus"></style>
 <style src="prismjs/themes/prism-tomorrow.css"></style>
 
