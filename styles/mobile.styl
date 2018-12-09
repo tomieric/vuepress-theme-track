@@ -1,0 +1,23 @@
+// narrow desktop / iPad
+@media (max-width: $MQNarrow)
+  .content:not(.custom)
+    padding 2rem 0
+  .content-header
+    padding 0 2rem
+
+// wide mobile
+@media (max-width: $MQMobile)
+  html 
+    font-size 12px
+  .content:not(.custom)
+    padding 2rem 0
+
+// narrow mobile
+@media (max-width: $MQMobileNarrow)
+  h1
+    font-size 1.9rem
+  .content:not(.custom)
+    padding 0
+  .content
+    pre, pre[class*="language-"]
+      border-radius 0
