@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander')
 const figlet = require('figlet')
 const chalk = require('chalk')
@@ -5,7 +7,7 @@ const pkg = require('../package.json')
 const createPost = require('./createPost')
 
 console.log(
-  chalk.blue.bold(
+  chalk.green(
       figlet.textSync('vp-track', { horizontalLayout: 'full' })
   )
 )

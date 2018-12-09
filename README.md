@@ -116,6 +116,8 @@ we're support to the `vp-track` command,It's usually use to create a new post
 
 ```
 $ npx vp-track --help
-$ npx vp-track -p docs/about-vue-beta-3
-> Create docs/about-vue-beta-3 succeeded
+# -p post
+# -d destination
+$ npx vp-track -p test -d docs/weekly
+> ✔ Create test succeeded!
 ```

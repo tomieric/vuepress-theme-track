@@ -21,7 +21,7 @@ function normalizeYaml(title, tags = '', author = '') {
 module.exports = (config) => {
   const title = config.post.replace(/.*\/(\w+)\.(\w+)/g, '$1')
   const spinner = ora('')
-  const filePath = path.resolve(config.destination || '', config.post)
+  const filePath = path.resolve(config.dest || '', config.post + '.md')
   const frontmatter = normalizeYaml(title, config.tag, config.author)
   const metaBanner = `---\n${frontmatter}---`
   fs.ensureFileSync(filePath)
