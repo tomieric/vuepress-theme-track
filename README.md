@@ -8,7 +8,7 @@
 
 [more screenshot](./screenshot/home.jpg)
 
-[Live Demo](https://kuaizi-co.github.io/blog)
+[Live Demo](https://kuaizi-co.github.io/blog/track.html)
 
 ## USAGE
 
