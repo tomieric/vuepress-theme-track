@@ -59,6 +59,11 @@
         'left': 0
       }
     }),
+    watch: {
+      tabs (tabs) {
+        this.$nextTick(() => tabs[0] && tabs[0].hash && this.selectTab(tabs[0].hash))
+      }
+    },
     created() {
       this.tabs = this.$children;
     },
@@ -66,9 +71,6 @@
       if(this.options.defaultTabHash !== null && this.findTab("#" + this.options.defaultTabHash)) {
         this.selectTab("#" + this.options.defaultTabHash)
         return
-      }
-      if (this.tabs.length) {
-        this.selectTab(this.tabs[0].hash)
       }
     },
     methods: {

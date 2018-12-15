@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-export const queryParse = (search = window.location.search) => {
+export const queryParse = (search) => {
+  if (typeof window === 'undefined') return {}
+  search = search || window.location.search
   if (!search) return {}
+  
   const queryString = search[0] === '?' ? search.substring(1) : search
   const query = {}
   queryString

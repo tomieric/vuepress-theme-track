@@ -48,7 +48,7 @@
       active (link) {
         const { pageRoot = '/' } = this.$themeConfig
         const path = String(this.$page.path).replace(/\.(html|md)#?(.*)/g, '')
-        return path === link || (link === pageRoot && ~this.$page.path.indexOf('/page')) || (link !== '/' && path.startsWith(link) )
+        return this.$page.path === link || path === link || (link === pageRoot && ~this.$page.path.indexOf('/page')) || (link !== '/' && path.startsWith(link) )
       },
       toggleNav () {
         this.showNavMask = !this.showNavMask

@@ -37,22 +37,22 @@
         h1
           margin-top 0
           font-size 10rem
-  .action-button
-    position absolute
-    bottom 20%
-    left 50%
-    transform translate3d(-50%, -50%, 0)
-    display inline-block
-    font-size 1.2rem
-    color #fff
-    background-color $accentColor
-    padding 0.8rem 1.6rem
-    border-radius 4px
-    transition background-color .1s ease
-    box-sizing border-box
-    border-bottom 1px solid darken($accentColor, 10%)
-    &:hover
-      background-color lighten($accentColor, 10%)
+      .action-button
+        position absolute
+        bottom 20%
+        left 50%
+        transform translate3d(-50%, -50%, 0)
+        display inline-block
+        font-size 1.2rem
+        color #fff
+        background-color $accentColor
+        padding 0.8rem 1.6rem
+        border-radius 4px
+        transition background-color .1s ease
+        box-sizing border-box
+        border-bottom 1px solid darken($accentColor, 10%)
+        &:hover
+          background-color lighten($accentColor, 10%)
 </style>
 
 <script>
@@ -62,7 +62,6 @@
   export default {
     computed: {
       poster () {
-        // return this.$themeConfig.notFoundImg ? (isExternal(this.$themeConfig.notFoundImg) : this.$themeConfig.notFoundImg : this.$withBase(this.$themeConfig.notFoundImg)) : poster
         return poster
       }
     },

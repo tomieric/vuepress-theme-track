@@ -9,6 +9,7 @@
         alt="hero"
       >
       <vue-particles
+        v-if="showParticles"
         class="hero-img-mask"
         color="#ffffff"
         :particleOpacity="0.3"
@@ -65,17 +66,20 @@
 </template>
 
 <script>
-import Vue from 'vue'
-// import VueParticles from 'vue-particles'
 import { debounce, isExternal } from '../util'
+// import vueParticles from 'vue-particles/vue-particles/vue-particles.common.js'
+import Vue from 'vue'
+// import vueParticles from 'vue-particles'
 let checkScrollHeight = () => {}
 
-// Vue.use(VueParticles)
+// console.log(vueParticles)
+// Vue.use(vueParticles)
 
 export default {
   data () {
     return {
-      showNavBar: false
+      showNavBar: false,
+      showParticles: false
     }
   },
   computed: {
@@ -111,6 +115,12 @@ export default {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', checkScrollHeight)
     }
+
+    // 动态引入
+    import('vue-particles').then(module => {
+      Vue.use(module.default)
+      this.$nextTick(() => (this.showParticles = true))
+    })
   },
   destroyed() {
     if (typeof window !== 'undefined') {

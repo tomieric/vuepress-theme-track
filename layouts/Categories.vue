@@ -26,3 +26,8 @@
     }
   }
 </script>
+
+<style lang="stylus" scoped>
+  .theme-track--page-poster
+    min-height 200px
+</style>

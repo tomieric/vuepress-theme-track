@@ -3,9 +3,9 @@ const path = require('path')
 module.exports = {
   layoutDir: './src/layouts',
   plugins: [
-    ['@vuepress/google-analytics'],
     ['@vuepress/back-to-top'],
     ['@vuepress/medium-zoom'],
+    ['@vuepress/google-analytics'],
     ['@vuepress/active-header-links'],
     ['@vuepress/register-components', {
       componentsDir: [

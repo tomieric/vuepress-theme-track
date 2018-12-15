@@ -3,6 +3,7 @@
     <div class="top-banner" :style="{ 'background-image': `url(${maskBgUrl})`}">
       <div class="top-banner-bg"></div>
       <vue-particles
+        v-if="showParticles"
         class="top-banner-mask"
         color="#6d6d6d"
         :particleOpacity="0.8"
@@ -27,15 +28,21 @@
 </template>
 
 <script>
-  // import Vue from 'vue'
-  // import VueParticles from 'vue-particles'
-  // Vue.use(VueParticles)
+  import Vue from 'vue'
   import maskBgUrl from '../assets/images/world.png'
   export default {
     data () {
       return {
-        maskBgUrl
+        maskBgUrl,
+        showParticles: false
       }
+    },
+    mounted() {
+      // 动态引入
+      import('vue-particles').then(module => {
+        Vue.use(module.default)
+        this.$nextTick(() => (this.showParticles = true))
+      })
     }
   }
 </script>

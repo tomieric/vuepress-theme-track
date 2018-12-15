@@ -23,8 +23,6 @@
 </template>
 
 <script>
-// import VueSticky  from 'vue-sticky'
-// import Vue from 'vue'
 import { isActive } from '../util'
 export default {
   props: ['items'],
@@ -33,15 +31,6 @@ export default {
       openGroupIndex: 0
     }
   },
-  // directives: {
-  //   'sticky': (() => {
-  //     if (typeof window !== 'undefined') {
-  //       return require('vue-sticky')
-  //     }
-  //     console.log('sticky')
-  //     return {}
-  //   })(),
-  // },
   created () {
     this.refreshIndex()
   },

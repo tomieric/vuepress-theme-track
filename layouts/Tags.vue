@@ -33,8 +33,6 @@
 </template>
 
 <script>
-  // import Vue from 'vue'
-  // import Tippy from 'v-tippy'
   import 'v-tippy/dist/tippy.css'
   import VueWordCloud from 'vuewordcloud'
   import { ensureExt, isExternal } from '../util'
@@ -42,8 +40,6 @@
   const rotationItems = [0, 1/8, 3/4, 7/8]
   const colors = ['#ffd077', '#3bc4c7', '#3a9eea', '#ff4e69', '#461e47']
   const Chance = items => items[Math.ceil(Math.random() * item.length)]
-
-  // Vue.use(Tippy)
 
   export default {
     components: {

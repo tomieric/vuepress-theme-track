@@ -127,7 +127,6 @@
 
   export default {
     data () {
-      // console.log(VueSticky)
       return {}
     },
     components: {
