@@ -1,3 +1,7 @@
+## [1.0.8](https://github.com/tomieric/vuepress-theme-track/compare/v1.0.7...v1.0.8) (2018-12-16)
+
+
+
 ## [1.0.7](https://github.com/tomieric/vuepress-theme-track/compare/v1.0.6...v1.0.7) (2018-12-15)
 
 
