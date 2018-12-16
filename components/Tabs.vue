@@ -56,6 +56,7 @@
       activeTabIndex: 0,
       lastActiveTabHash: '',
       swiperX: 0,
+      swiperY: 0,
       curIndex: 0,
       gapStyle: {
         'visiblity': false,
@@ -176,6 +177,7 @@
         const touches = e.changedTouches
         if (touches && touches[0]) {
           this.swiperX = touches[0].pageX
+          this.swiperY = touches[0].pageY
           e.preventDefault()
           e.stopPropagation()
         }
@@ -195,7 +197,7 @@
 
       swiperEnd (e) {
         const touches = e.changedTouches
-        if (touches && touches[0]) {
+        if (touches && touches[0] && Math.abs(this.swiperY - touches[0].pageY) < 50 && Math.abs(this.swiperX - touches[0].pageX) > 100) {
           this.changeTab(this.swiperX > touches[0].pageX)
           e.preventDefault()
           e.stopPropagation()

@@ -39,7 +39,8 @@
     },
     data: () => ({
       showNavMask: false,
-      swiperX: 0
+      swiperX: 0,
+      swiperY: 0
     }),
     methods: {
       isExternal,
@@ -61,14 +62,16 @@
         const touches = e.changedTouches
         if (touches && touches[0]) {
           this.swiperX = touches[0].pageX
+          this.swiperY = touches[0].pageY
         } else {
           this.swiperX = 0
+          this.swiperY = 0
         }
       },
       touchend (e) {
         const touches = e.changedTouches
         if (touches && touches[0] && this.swiperX !== touches[0].pageX) {
-          window.innerWidth <= 960 && (this.showNavMask = this.swiperX < touches[0].pageX)
+          window.innerWidth <= 960 && Math.abs(this.swiperY - touches[0].pageY) < 50 && (this.showNavMask = this.swiperX + 100 < touches[0].pageX)
         }
       }
     },
