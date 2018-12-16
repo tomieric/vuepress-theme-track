@@ -2,7 +2,7 @@
   <ContentWrapper custom-class="no-min-height">
     <nav class="pagination-nav">
       <router-link class="pagination-action pagination-prev" 
-        :to="$pagination.prevLink"
+        :to="calcutePath($pagination.prevLink)"
         v-if="$pagination && $pagination.hasPrev">← </router-link>
       <div class="pagination-docker">
         <router-link v-for="({ path }, index) in pages"

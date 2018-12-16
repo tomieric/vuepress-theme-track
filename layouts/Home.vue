@@ -66,14 +66,10 @@
 </template>
 
 <script>
-import { debounce, isExternal } from '../util'
-// import vueParticles from 'vue-particles/vue-particles/vue-particles.common.js'
 import Vue from 'vue'
-// import vueParticles from 'vue-particles'
+import { debounce, isExternal } from '../util'
 let checkScrollHeight = () => {}
 
-// console.log(vueParticles)
-// Vue.use(vueParticles)
 
 export default {
   data () {

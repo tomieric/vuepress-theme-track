@@ -263,4 +263,8 @@
     max-width $contentWidth
     margin px2rem(20px) auto px2rem(50px)
     padding 2rem 2.5rem
+  @media (max-width: $MQMobile)
+    .theme-track--content-main
+      margin-left 0
+      border none
 </style>

@@ -30,13 +30,14 @@
       </li>
       <li class="tabs-component-tab-gap" :style="gapStyle"></li>
     </ul>
-    <div class="tabs-component-panels">
+    <div class="tabs-component-panels" @touchstart="swiperStart($event)" @touchend="swiperEnd($event)">
       <slot/>
     </div>
   </div>
 </template>
 
 <script>
+  import { debounce } from '../util'
   // fork https://github.com/spatie/vue-tabs-component
   export default {
     props: {
@@ -54,6 +55,8 @@
       activeTabHash: '',
       activeTabIndex: 0,
       lastActiveTabHash: '',
+      swiperX: 0,
+      curIndex: 0,
       gapStyle: {
         'visiblity': false,
         'left': 0
@@ -61,7 +64,10 @@
     }),
     watch: {
       tabs (tabs) {
-        this.$nextTick(() => tabs[0] && tabs[0].hash && this.selectTab(tabs[0].hash))
+        this.$nextTick(() => {
+          tabs[0] && tabs[0].hash && this.selectTab(tabs[0].hash)
+          this.curIndex = 0 
+        })
       }
     },
     created() {
@@ -74,8 +80,13 @@
       }
     },
     methods: {
+      debounce,
       findTab(hash) {
-        return this.tabs.find(tab => tab.hash === hash)
+        return this.tabs.find((tab, idx) => {
+          const isCur = tab.hash === hash
+          isCur && (this.curIndex = idx)
+          return isCur
+        })
       },
       selectTab(selectedTabHash, event) {
         // See if we should store the hash in the url fragment.
@@ -158,6 +169,36 @@
         return {
           left: activeTab.offsetLeft + 'px',
           width: activeTab.offsetWidth + 'px'
+        }
+      },
+
+      swiperStart (e) {
+        const touches = e.changedTouches
+        if (touches && touches[0]) {
+          this.swiperX = touches[0].pageX
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      },
+
+      changeTab (isLeft) {
+        const newIdx = isLeft ? --this.curIndex : ++this.curIndex
+        if (newIdx < 0) {
+          return (this.curIndex = 0)
+        }
+        if (newIdx > this.tabs.length - 1) {
+          return (this.curIndex = this.tabs.length - 1)
+        }
+        const tabHash = this.getTabHash(newIdx)
+        this.selectTab(tabHash)
+      },
+
+      swiperEnd (e) {
+        const touches = e.changedTouches
+        if (touches && touches[0]) {
+          this.changeTab(this.swiperX > touches[0].pageX)
+          e.preventDefault()
+          e.stopPropagation()
         }
       }
     }

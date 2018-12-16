@@ -17,7 +17,7 @@
         </a>
       </li>
     </ul>
-    <SidebarButton :active="showNavMask" @toggle-nav="toggleNav" />
+    <SidebarButton ref="button" :active="showNavMask" @toggle-nav="toggleNav" />
     <div v-show="showNavMask" class="theme-track--nav-mask" @click.stop="handleHideNavlist"></div>
   </nav>
 </template>
@@ -38,7 +38,8 @@
       }
     },
     data: () => ({
-      showNavMask: false
+      showNavMask: false,
+      swiperX: 0
     }),
     methods: {
       isExternal,
@@ -55,6 +56,32 @@
       },
       handleHideNavlist () {
         this.showNavMask = false
+      },
+      touchstart (e) {
+        const touches = e.changedTouches
+        if (touches && touches[0]) {
+          this.swiperX = touches[0].pageX
+        } else {
+          this.swiperX = 0
+        }
+      },
+      touchend (e) {
+        const touches = e.changedTouches
+        if (touches && touches[0] && this.swiperX !== touches[0].pageX) {
+          window.innerWidth <= 960 && (this.showNavMask = this.swiperX < touches[0].pageX)
+        }
+      }
+    },
+    mounted() {
+      if (typeof window !== 'undefined') {
+        document.addEventListener('touchstart', this.touchstart)
+        document.addEventListener('touchend', this.touchend)
+      }
+    },
+    destroyed() {
+      if (typeof window !== 'undefined') {
+        document.removeEventListener('touchstart', this.touchstart)
+        document.removeEventListener('touchend', this.touchend)
       }
     }
   }
