@@ -25,6 +25,18 @@ module.exports = {
         {
           when: ({ frontmatter }) => frontmatter.pageLayout === 'Layout',
           frontmatter: { layout: 'Layout' }
+        },
+        {
+          when: ({ frontmatter }) => frontmatter.pageLayout === 'Weekly',
+          frontmatter: { layout: 'Weekly' }
+        },
+        {
+          when: ({ frontmatter }) => frontmatter.type === 'weekly',
+          frontmatter: { layout: 'Page' }
+        },
+        {
+          when: ({ path }) => path.startsWith('/weekly'),
+          frontmatter: { showAuthor: false, next: false, sidebar: false }
         }
       ]
     }],

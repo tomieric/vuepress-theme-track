@@ -38,7 +38,7 @@
         </Sidebar>
         <div class="theme-track--content-main" :class="{ 'full': isFull }">
           <div class="theme-track--content-meta">
-            <h1>{{ $page.frontmatter.title }}</h1>
+            <h1 v-if="$page.frontmatter.showTitle !== false">{{ $page.frontmatter.title }}</h1>
             <GithubCard
               :author="$page.frontmatter.author"
               :size="100"
@@ -65,7 +65,7 @@
               </span>
             </p>
           </div>
-          <Content :custom="false" />
+          <Content :custom="false"  :class="{ weekly: isWeekly }" />
           <p
             class="theme-track--content-page"
           >
@@ -138,7 +138,10 @@
         return this.$page.frontmatter.sidebar === false
       },
       isComment() {
-        return this.$site.themeConfig.comment && this.$page.type === 'post'
+        return this.$site.themeConfig.comment && (this.$page.type === 'post' || this.$page.frontmatter.type === 'weekly')
+      },
+      isWeekly () {
+        return this.$page.frontmatter.type === 'weekly'
       },
       pageHiddenAuthor () {
         return this.$page.frontmatter.showAuthor === false
@@ -267,4 +270,9 @@
     .theme-track--content-main
       margin-left 0
       border none
+  .content.weekly
+    h2
+      border-bottom-style dotted
+    hr
+      border-top-style dotted
 </style>

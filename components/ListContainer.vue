@@ -15,6 +15,19 @@
           </router-link>
         </li>
       </ul>
+      <ul
+        v-else-if="type === 'weekly'"
+        class="category-list"
+      >
+        <li
+          v-for="(item, idx) in list"
+          :key="idx"
+        >
+          <router-link :to="item.path" class="tag-link">
+            {{item.title}}
+          </router-link>
+        </li>
+      </ul>
       <Tag v-else v-for="(item, idx) in list"
         :key="idx"
       >
