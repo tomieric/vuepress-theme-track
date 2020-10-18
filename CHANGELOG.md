@@ -1,3 +1,7 @@
+## [2.0.1](https://github.com/tomieric/vuepress-theme-track/compare/v2.0.0...v2.0.1) (2020-10-18)
+
+
+
 ## [1.0.13](https://github.com/tomieric/vuepress-theme-track/compare/v1.0.12...v1.0.13) (2020-10-14)
 
 
