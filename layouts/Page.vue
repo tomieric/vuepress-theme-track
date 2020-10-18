@@ -203,7 +203,7 @@
   {$theme}
     &{$content}
       margin 0 auto
-      width 1280px
+      max-width 1280px
       &-main
         margin-left 12rem
         padding 0 40px
