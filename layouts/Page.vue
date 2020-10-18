@@ -6,22 +6,6 @@
         v-if="$page.frontmatter.poster"
         class="theme-track--content-poster"
       />
-      <p v-if="$page.frontmatter.poster" class="theme-track--content-date">
-        <span>Publish: {{ $page.frontmatter.date }}</span>
-        <span
-          v-if="$page.tags && $page.tags.length"
-        >
-          Tags:
-          <router-link
-            v-for="(tag, tagIdx) in $page.tags"
-            :key="tagIdx"
-            :to="toTagLink(tag)"
-            class="tag"
-          >
-            {{ tag }}
-          </router-link> 
-        </span>
-      </p>
       <div class="theme-track--content">
         <Sidebar
           :items="sidebarItems"
@@ -37,6 +21,23 @@
           />
         </Sidebar>
         <div class="theme-track--content-main" :class="{ 'full': isFull }">
+          <p v-if="$page.frontmatter.poster" class="theme-track--content-date">
+            <span>Publish: {{ $page.frontmatter.date }}</span>
+            <span
+              v-if="$page.tags && $page.tags.length"
+            >
+              Tags:
+              <router-link
+                v-for="(tag, tagIdx) in $page.tags"
+                :key="tagIdx"
+                :to="toTagLink(tag)"
+                class="tag"
+              >
+                {{ tag }}
+              </router-link> 
+            </span>
+          </p>
+
           <div class="theme-track--content-meta">
             <h1 v-if="$page.frontmatter.showTitle !== false">{{ $page.frontmatter.title }}</h1>
             <GithubCard
@@ -87,7 +88,7 @@
             </router-link>
           </p>
           <div id="comment-container" v-if="isComment">
-            <Comment />
+            <!-- <Comment /> -->
           </div>
         </div>
       </div>
@@ -96,7 +97,7 @@
 </template>
 
 <script>
-  import Comment from '../comment'
+  // import Comment from '../comment'
   import Sidebar from '../components/Sidebar'
   import {
     resolvePage,
@@ -113,7 +114,7 @@
   function resolveNext(name, pages) {
     return find(name, pages, 1)
   }
-  function find(name, pages, offset) {
+  function find(name, pages = [], offset) {
     for (let i = 0; i < pages.length; i++) {
       if (pages[i].key === name) {
         if (offset < 0 && i === 0) return false
@@ -130,7 +131,7 @@
       return {}
     },
     components: {
-      Comment,
+      // Comment,
       Sidebar
     },
     computed: {
@@ -203,10 +204,13 @@
     &{$content}
       &-main
         margin-left 12rem
+        padding 0 40px
         border-left 1px solid $borderColor
         &.full
-          margin-left 0
+          margin 0 auto
+          padding 0
           border-left 0
+          max-width 960px
       &-poster
         display block
         width 100%

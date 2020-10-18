@@ -194,6 +194,7 @@ $headerColor=#fff
     max-width none
     padding 0
     margin 0
+    min-height 200px
     .hero-img
       display block
       width 100%

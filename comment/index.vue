@@ -130,7 +130,7 @@
       <!-- comments list -->
       <div class="gt-comments" key="comments">
         <transition-group name="flip-list">
-          <Comment 
+          <!-- <Comment 
             v-for="c in totalComments" 
             :comment="c"
             :key="c.id"
@@ -140,7 +140,7 @@
             :admin="options.admin"
             @like="like"
             @unlike="unLike"
-            @reply="reply" />
+            @reply="reply" /> -->
         </transition-group>
           
         <p v-if="!totalComments.length" class="gt-comments-null">
@@ -177,14 +177,14 @@ import {
 import Svg from './components/Svg';
 import Button from './components/Button';
 import Action from './components/Action';
-import Comment from './components/Comment';
+// import Comment from './components/Comment';
 
 export default {
   mixins: [Mixin],
   components: {
     SvgSpiner: Svg,
     Button,
-    Comment,
+    // Comment,
     Action
   },
   computed: {

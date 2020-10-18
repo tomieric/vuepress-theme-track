@@ -11,7 +11,7 @@
       />
     </span>
     <slot />
-    <pop-over v-model="cardVisible" :user="author" :top="size" :width="width" @mouseenter.native="togglePopOver(true)"
+    <pop-over v-model="cardVisible" :user="authorName" :top="size" :width="width" @mouseenter.native="togglePopOver(true)"
       @mouseleave.native="togglePopOver(false)"  :closeDelay="300" />
   </div>
 </template>
@@ -51,6 +51,9 @@
     computed: {
       authorAvatar () {
         return 'https://github.com/'+ (this.author || 'Kuaizi-co') +'.png?size=' + (this.size || 50)
+      },
+      authorName () {
+        return this.author || 'kuaizi-co'
       }
     }
   }
