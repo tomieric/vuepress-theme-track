@@ -45,6 +45,8 @@ export default {
 
 <style lang="stylus">
 .pagination-nav
+  max-width 1280px
+  margin: 0 auto
   padding px2rem(40px) 0
   text-align center
   clear both

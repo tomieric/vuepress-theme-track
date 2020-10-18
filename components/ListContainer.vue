@@ -48,6 +48,8 @@ export default {
 <style lang="stylus">
 {$theme}
   &tag
+    max-width 960px
+    margin: 0 auto
     padding px2rem(30px) 0
     min-height calc(100vh - 220px)
     > h2

@@ -21,8 +21,9 @@
 {$theme}
   &list
     list-style none
-    margin 0
+    margin 0 auto
     padding 0
+    max-width 960px
     &.no-pager
       > li:last-child
         border-bottom none

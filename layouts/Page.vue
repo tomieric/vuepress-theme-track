@@ -202,6 +202,8 @@
   $content = 'content'
   {$theme}
     &{$content}
+      margin 0 auto
+      width 1280px
       &-main
         margin-left 12rem
         padding 0 40px
@@ -211,10 +213,13 @@
           padding 0
           border-left 0
           max-width 960px
+        img
+          max-width 100%
       &-poster
         display block
         width 100%
         height auto
+        min-height  150px
         background $borderColor
       &-date
         text-align right

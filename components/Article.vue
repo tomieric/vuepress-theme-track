@@ -99,7 +99,10 @@
           margin-bottom px2rem(50px)
           width 100%
           height auto
+          min-height 200px
+          object-fit cover
           transition opacity .3s
+          background #EEEEEE
           &:hover
             opacity .9
         img
